@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-// 配列の中の挨拶をfor文で表示する関数
-func hello() {
-    // 配列の中の挨拶をfor文で表示する
-    // greetings := []stringは、string型の配列を作るという意味
-    greetings := []string{"Good morning", "Good afternoon", "Good night"}
-    // forの後の_,は、index番号を使わないという意味。
-    // greeting := range greetingsは、配列の中身をgreetingに入れるという意味
-    for _, greeting := range greetings {
-        // 配列の中身を表示する
-        fmt.Println(greeting)
-    }
-}
-
 func main() {
-    // hello関数を呼び出す
-    hello()
+    // int型の変数を宣言
+    var num int = 42
+    // int型のポインタを宣言し、numのアドレスを代入
+    var ptr *int = &num
+
+    // numの値とアドレスを表示
+    fmt.Println("num =", num)
+    fmt.Println("ptr =", ptr)
+    fmt.Println("ptrのアドレス =", &ptr)
+
+    // ポインター経由でnumの値を変更
+    *ptr = 100
+
+    // 変更された値を表示
+    fmt.Println("num =", num)
 }
