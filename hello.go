@@ -2,39 +2,20 @@ package main
 
 import "fmt"
 
-func main() {
-    // numsは、int型のスライス
-    nums := []int{2, 3, 4}
-    // sumは、int型
-    sum := 0
-    // _,は、インデックスを無視することを示す
-    // rangeは、スライスやマップを反復処理する
-    for _, num := range nums {
-        sum += num
-    }
-    fmt.Println("sum:", sum)
-    // rangeは、インデックスと値の両方を返す
-    for i, num := range nums {
-        // num == 3のとき、iを出力する
-        if num == 3 {
-            fmt.Println("index:", i)
-        }
-    }
-    // kvsは、map[string]string型
-    kvs := map[string]string{"a": "apple", "b": "banana"}
-    // for k, v := range kvsは、mapのキーと値を反復処理する
-    for k, v := range kvs {
-        fmt.Printf("%s -> %s\n", k, v)
-    }
-    // for k := range kvsは、mapのキーを反復処理する
-    for k := range kvs {
-        fmt.Println("key:", k)
-    }
-    // for i, c := range "go"は、文字列の文字とそのインデックスを反復処理する
-    for i, c := range "go" {
-        fmt.Println(i, c)
+// 配列の中の挨拶をfor文で表示する関数
+func hello() {
+    // 配列の中の挨拶をfor文で表示する
+    // greetings := []stringは、string型の配列を作るという意味
+    greetings := []string{"Good morning", "Good afternoon", "Good night"}
+    // forの後の_,は、index番号を使わないという意味。
+    // greeting := range greetingsは、配列の中身をgreetingに入れるという意味
+    for _, greeting := range greetings {
+        // 配列の中身を表示する
+        fmt.Println(greeting)
     }
 }
 
-// まとめ
-// rangeは、スライスやマップを反復処理する
+func main() {
+    // hello関数を呼び出す
+    hello()
+}
