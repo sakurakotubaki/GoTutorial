@@ -39,3 +39,13 @@ hashimotojunichi@hashimotojunichinoMacBook-Pro go-example % go run hello.go
 hashimotojunichi@hashimotojunichinoMacBook-Pro go-example % go run hello.go
 おみくじの結果: 吉
 ```
+
+このプログラムでは、rand.Seed(time.Now().UnixNano())によって乱数生成器のシードを設定しています。これにより、実行ごとに異なる結果が得られます。
+
+resultsにはおみくじの結果のリストを格納しています。rand.Intn(len(results))によって、結果のリストの中からランダムにインデックスを選びます。
+
+最後に、選ばれた結果を表示します。
+
+上記のコードをGoのソースファイル（例：omikuji.go）に保存し、コンパイルして実行すると、おみくじの結果が表示されます。
+
+注意点として、おみくじの結果をより多く用意したい場合は、resultsの要素を追加することで対応できます。
