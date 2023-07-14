@@ -1,21 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
-    // int型の変数を宣言
-    var num int = 42
-    // int型のポインタを宣言し、numのアドレスを代入
-    var ptr *int = &num
+	// 乱数のシードを設定
+	rand.Seed(time.Now().UnixNano())
 
-    // numの値とアドレスを表示
-    fmt.Println("num =", num)
-    fmt.Println("ptr =", ptr)
-    fmt.Println("ptrのアドレス =", &ptr)
+	// おみくじの結果のリスト
+	results := []string{
+		"大吉",
+		"中吉",
+		"小吉",
+		"吉",
+		"凶",
+	}
 
-    // ポインター経由でnumの値を変更
-    *ptr = 100
-
-    // 変更された値を表示
-    fmt.Println("num =", num)
+	// 乱数を生成して結果を表示
+	randomIndex := rand.Intn(len(results))
+	result := results[randomIndex]
+	fmt.Println("おみくじの結果:", result)
 }
