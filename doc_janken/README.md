@@ -64,4 +64,4 @@ hashimotojunichi@hashimotojunichinoMacBook-Pro go-example % go run hello.go
 あなた: ✌️
 コンピュータ: ✌️
 結果: 引き分け
-```
+```50
