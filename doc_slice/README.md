@@ -1,3 +1,8 @@
+# Goで配列を操作するには?
+Go言語では、スライスを使って配列を操作することが多いそうです。
+
+## 📦要素の追加・更新・削除をやってみる
+```go
 package main
 
 import "fmt"
@@ -39,3 +44,17 @@ func main() {
 	fmt.Println(fruits[:])
 	fmt.Println(len(fruits))
 }
+```
+
+**実行結果**
+```
+apple
+banana
+grape
+orange
+[apple banana grape orange]
+4
+lemon
+[banana grape orange]
+3
+```
