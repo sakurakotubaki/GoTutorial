@@ -3,47 +3,41 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math/rand"
 	"os"
 	"strings"
-	"time"
 )
 
-var choices = []string{"✊", "✌️", "✋"}
-
 func main() {
-	// 乱数のシードを設定
-	rand.Seed(time.Now().UnixNano())
-
+	// 標準入力の準備
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println("じゃんけんゲームを始めます！")
-	fmt.Println("✊: グー, ✌️: チョキ, ✋: パー")
-	fmt.Print("選択してください（✊, ✌️, ✋）: ")
+	fmt.Println("動物の鳴き声クイズ！")
+	fmt.Println("犬、猫、または猿の鳴き声を当ててください。")
 
-	// プレイヤーの選択
-	playerChoice, _ := reader.ReadString('\n')
-	playerChoice = strings.TrimSpace(playerChoice)
-
-	// コンピュータの選択
-	computerChoice := choices[rand.Intn(len(choices))]
-
-	fmt.Println("あなた:", playerChoice)
-	fmt.Println("コンピュータ:", computerChoice)
-
-	// 結果の判定
-	result := judge(playerChoice, computerChoice)
-	fmt.Println("結果:", result)
-}
-
-func judge(playerChoice, computerChoice string) string {
-	if playerChoice == computerChoice {
-		return "引き分け"
-	} else if (playerChoice == "✊" && computerChoice == "✌️") ||
-		(playerChoice == "✌️" && computerChoice == "✋") ||
-		(playerChoice == "✋" && computerChoice == "✊") {
-		return "あなたの勝ち"
-	} else {
-		return "コンピュータの勝ち"
+	// 問題のデータを作成
+	questions := map[string]string{
+		"1. ワンワン": "犬",
+		"2. ニャーニャー": "猫",
+		"3. キーキー": "猿",
 	}
+
+	correctCount := 0 // 正解の数をカウント
+  // 問題を出題
+	for question, answer := range questions {
+		// 問題を表示
+		fmt.Println(question)
+    // ユーザーの回答を受け取る。, _ はエラーを無視するための記号
+		userAnswer, _ := reader.ReadString('\n')
+		// 回答を整形
+		userAnswer = strings.ToLower(strings.TrimSpace(userAnswer))
+    // 回答をチェック
+		if userAnswer == answer {
+			fmt.Println("正解！")
+			correctCount++
+		} else {
+			fmt.Println("不正解！正解は", answer, "です。")
+		}
+	}
+
+	fmt.Println("クイズ終了！正解数:", correctCount)
 }
