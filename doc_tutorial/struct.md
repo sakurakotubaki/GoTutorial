@@ -1,3 +1,5 @@
+# 構造体とポインター
+```go
 package main
 
 import "fmt"
@@ -21,3 +23,4 @@ func main() {
 	fmt.Println(i.age)
 	fmt.Println("変数jのメモリの場所", &j)
 }
+```
