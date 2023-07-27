@@ -1,6 +1,13 @@
 # Go言語を学ぶ
 https://go.dev/doc/tutorial/getting-started
 
+## ⚙️リモートの内容を取り込むとき
+別のブランチから、コミットを取り込んでリモートでマージした時は、pullするよりこちらのコマンドの方が良い。
+```
+ $ git fetch origin main
+ $ git merge origin/main
+```
+
 1. プロジェクトを作る
 ```
 mkdir hello
