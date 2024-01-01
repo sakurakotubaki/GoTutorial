@@ -1,4 +1,69 @@
 # Goで配列を操作するには?
+
+## 配列を定義する
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var colors [3]string = [3]string{"red", "green", "blue"}
+	
+	// 配列の要素数を省略することもできる
+	// var colors [3]string = [...]string{"red", "green", "blue"}
+  
+	// logに出す
+	fmt.Println(colors)
+}
+```
+
+## スライスを定義する
+```go
+package main
+
+import "fmt"
+
+func main() {
+	numbers := []int{1, 2, 3, 4, 5}
+	fmt.Println(numbers)
+}
+```
+
+このようにも使える:
+```go
+package main
+
+import "fmt"
+
+func main() {
+	// スライスの作成
+	numbers := []int{1, 2, 3, 4, 5}
+	fmt.Println("元のスライス:", numbers)
+
+	// スライスの要素を変更
+	numbers[0] = 10
+	fmt.Println("要素を変更したスライス:", numbers)
+
+	// スライスの一部を取得
+	slice1 := numbers[1:3]
+	fmt.Println("一部を取得したスライス:", slice1)
+
+	// スライスの要素を追加
+	slice1 = append(slice1, 6)
+	fmt.Println("要素を追加したスライス:", slice1)
+
+	// スライスの要素を削除
+	slice1 = append(slice1[:1], slice1[2:]...)
+	fmt.Println("要素を削除したスライス:", slice1)
+
+	// スライスの長さと容量
+	fmt.Println("スライスの長さ:", len(slice1))
+	fmt.Println("スライスの容量:", cap(slice1))
+}
+```
+
+-------
+
 Go言語では、スライスを使って配列を操作することが多いそうです。
 
 ## 📦要素の追加・更新・削除をやってみる
