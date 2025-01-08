@@ -2,32 +2,48 @@ package main
 
 import "fmt"
 
-// Person構造体の定義
 type Person struct {
 	Name string
 	Age  int
 }
 
-// 値レシーバーを使用したメソッド
-func (p Person) Greet() {
-	fmt.Printf("こんにちは、私は%sです。%d歳です。\n", p.Name, p.Age)
+// コンストラクタ関数
+func NewPerson(name string, age int) *Person {
+	return &Person{
+		Name: name,
+		Age:  age,
+	}
 }
 
-// ポインタレシーバーを使用したメソッド
-func (p *Person) Birthday() {
-	p.Age++
-	fmt.Printf("お誕生日おめでとう！%sさんは%d歳になりました！\n", p.Name, p.Age)
+// 名前を設定するメソッド
+func (p *Person) SetName(name string) {
+	p.Name = name
 }
 
+// 年齢を設定するメソッド
+func (p *Person) SetAge(age int) {
+	p.Age = age
+}
+
+// 情報を取得するメソッド
+func (p Person) GetInfo() string {
+	return fmt.Sprintf("%s is %d years old", p.Name, p.Age)
+}
+
+// メインプログラムでの使用例
 func main() {
-	// Personのインスタンスを作成
-	person := Person{
-		Name: "田中",
-		Age:  25,
+	// 方法1: コンストラクタを使用
+	person1 := NewPerson("田中", 25)
+	fmt.Println(person1.GetInfo()) // 出力: 田中 is 25 years old
+
+	// 方法2: 構造体を直接初期化
+	person2 := &Person{
+		Name: "佐藤",
+		Age:  30,
 	}
 
-	// メソッドの呼び出し
-	person.Greet()    // 値レシーバー
-	person.Birthday() // ポインタレシーバー
-	person.Greet()    // 年齢が変更されていることを確認
+	// メソッドを使って値を変更
+	person2.SetName("鈴木")
+	person2.SetAge(35)
+	fmt.Println(person2.GetInfo()) // 出力: 鈴木 is 35 years old
 }
